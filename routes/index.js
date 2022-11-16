@@ -1,9 +1,15 @@
 var express = require('express');
 var router = express.Router();
+var mainCollection = require('../models/model-main');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  (async function () {
+    const mCollection = await mainCollection.find();
+    res.render('index', { title: 'pkutils.com | Index', version: mCollection });
+  })();
 });
+
+
 
 module.exports = router;

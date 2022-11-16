@@ -1,3 +1,4 @@
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -22,23 +23,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+//---------------------------------------------------------------------------
+//  DB Connection
+//---------------------------------------------------------------------------
+var mongoose = require('mongoose');
+const connectionString = process.env.DB_CONNECTION;
+//const connectionString = 'mongodb+srv://zakriah:Thewhiterabbit@smelser.z2i31.mongodb.net/pkutils_db?retryWrites=true&w=majority';
+mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+//---------------------------------------------------------------------------
 
 
-//-----
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://rhel:27017/";
-
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("pkutils");
-  dbo.collection("pond").find().toArray(function(err, result) {
-    if (err) throw err;
-    console.log(result);
-    db.close();
-  });
-});
-
-//-----
 
 
 
