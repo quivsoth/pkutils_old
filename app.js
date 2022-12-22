@@ -1,4 +1,4 @@
-require('dotenv').config();
+//require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -26,10 +26,10 @@ app.use('/users', usersRouter);
 //---------------------------------------------------------------------------
 //  DB Connection
 //---------------------------------------------------------------------------
-var mongoose = require('mongoose');
-const connectionString = process.env.DB_CONNECTION;
+//var mongoose = require('mongoose');
+//const connectionString = process.env.DB_CONNECTION;
 //const connectionString = 'mongodb+srv://zakriah:Thewhiterabbit@smelser.z2i31.mongodb.net/pkutils_db?retryWrites=true&w=majority';
-mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+//mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
 //---------------------------------------------------------------------------
 
 
